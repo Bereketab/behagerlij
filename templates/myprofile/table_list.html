@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+
+    <h2>Here are all user profiles: </h2>
+    <div>
+        <ul>
+            {% for profile in object_list %}
+                <li>{{ profile.table_name }}| <a
+                        href="{% url 'myprofile:table-update' profile.pk %}">edit</a>
+                    <a href="{% url 'myprofile:table-delete' profile.pk %}">delete</a>
+                </li>
+            {% empty %}
+                <li>No profile yet.</li>
+            {% endfor %}
+
+        </ul>
+        <p>
+            <a href="{% url 'myprofile:table-add' %}">add a profile</a>
+        </p>
+    </div>
+{% endblock %}
